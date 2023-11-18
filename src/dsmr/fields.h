@@ -240,6 +240,8 @@ namespace dsmr
       static constexpr char MJ[] = "MJ";
       static constexpr char kvar[] = "kvar";
       static constexpr char kvarh[] = "kvarh";
+      static constexpr char kVAr[] = "kVAr";
+      static constexpr char kVArh[] = "kVArh";
       static constexpr char kVA[] = "kVA";
       static constexpr char VA[] = "VA";
       static constexpr char s[] = "s";
@@ -302,7 +304,7 @@ namespace dsmr
     /*
  * Extra fields used for Luxembourg and Lithuania
  */
-    DEFINE_FIELD(total_imported_energy, FixedValue, ObisId(1, 0, 3, 8, 0), FixedField, units::kvarh, units::kvarh);
+    DEFINE_FIELD(total_imported_energy, FixedValue, ObisId(1, 0, 3, 8, 0), FixedField, units::kvarh, units::kVArh);
     /* Meter Reading Reactive energy delivered to client (Tariff 1) in 0,001 kvarh */
     DEFINE_FIELD(reactive_energy_delivered_tariff1, FixedValue, ObisId(1, 0, 3, 8, 1), FixedField, units::kvarh, units::kvarh);
     /* Meter Reading Reactive energy delivered to client (Tariff 2) in 0,001 kvarh */
@@ -312,7 +314,7 @@ namespace dsmr
     /* Meter Reading Reactive energy delivered to client (Tariff 4) in 0,001 kvarh */
     DEFINE_FIELD(reactive_energy_delivered_tariff4, FixedValue, ObisId(1, 0, 3, 8, 4), FixedField, units::kvarh, units::kvarh);
 
-    DEFINE_FIELD(total_exported_energy, FixedValue, ObisId(1, 0, 4, 8, 0), FixedField, units::kvarh, units::kvarh);
+    DEFINE_FIELD(total_exported_energy, FixedValue, ObisId(1, 0, 4, 8, 0), FixedField, units::kvarh, units::kVArh);
     /* Meter Reading Reactive energy delivered by client (Tariff 1) in 0,001 kvarh */
     DEFINE_FIELD(reactive_energy_returned_tariff1, FixedValue, ObisId(1, 0, 4, 8, 1), FixedField, units::kvarh, units::kvarh);
     /* Meter Reading Reactive energy delivered by client (Tariff 2) in 0,001 kvarh */
@@ -335,8 +337,8 @@ namespace dsmr
     /*
  * Extra fields used for Luxembourg and Lithuania
  */
-    DEFINE_FIELD(reactive_power_delivered, FixedValue, ObisId(1, 0, 3, 7, 0), FixedField, units::kvar, units::kvar);
-    DEFINE_FIELD(reactive_power_returned, FixedValue, ObisId(1, 0, 4, 7, 0), FixedField, units::kvar, units::kvar);
+    DEFINE_FIELD(reactive_power_delivered, FixedValue, ObisId(1, 0, 3, 7, 0), FixedField, units::kvar, units::kVArh);
+    DEFINE_FIELD(reactive_power_returned, FixedValue, ObisId(1, 0, 4, 7, 0), FixedField, units::kvar, units::kVArh);
 
     /* The actual threshold Electricity in kW. Removed in 4.0.7 / 4.2.2 / 5.0 */
     DEFINE_FIELD(electricity_threshold, FixedValue, ObisId(0, 0, 17, 0, 0), FixedField, units::kW, units::W);
@@ -448,22 +450,22 @@ namespace dsmr
  */
     /* TODO: by IEC 62056 unit's shoudl be kvar, safe to change? */
     /* Instantaneous reactive power L1 (+Q) in W resolution */
-    DEFINE_FIELD(reactive_power_delivered_l1, FixedValue, ObisId(1, 0, 23, 7, 0), FixedField, units::none, units::none);
+    DEFINE_FIELD(reactive_power_delivered_l1, FixedValue, ObisId(1, 0, 23, 7, 0), FixedField, units::kVArh, units::none);
     /* Instantaneous reactive power L2 (+Q) in W resolution */
-    DEFINE_FIELD(reactive_power_delivered_l2, FixedValue, ObisId(1, 0, 43, 7, 0), FixedField, units::none, units::none);
+    DEFINE_FIELD(reactive_power_delivered_l2, FixedValue, ObisId(1, 0, 43, 7, 0), FixedField, units::kVArh, units::none);
     /* Instantaneous reactive power L3 (+Q) in W resolution */
-    DEFINE_FIELD(reactive_power_delivered_l3, FixedValue, ObisId(1, 0, 63, 7, 0), FixedField, units::none, units::none);
+    DEFINE_FIELD(reactive_power_delivered_l3, FixedValue, ObisId(1, 0, 63, 7, 0), FixedField, units::kVArh, units::none);
 
     /*
  * LUX and Lithuania
  */
     /* TODO: by IEC 62056 unit's shoudl be kvar, safe to change? */
     /* Instantaneous reactive power L1 (-Q) in W resolution */
-    DEFINE_FIELD(reactive_power_returned_l1, FixedValue, ObisId(1, 0, 24, 7, 0), FixedField, units::none, units::none);
+    DEFINE_FIELD(reactive_power_returned_l1, FixedValue, ObisId(1, 0, 24, 7, 0), FixedField, units::kVArh, units::none);
     /* Instantaneous reactive power L2 (-Q) in W resolution */
-    DEFINE_FIELD(reactive_power_returned_l2, FixedValue, ObisId(1, 0, 44, 7, 0), FixedField, units::none, units::none);
+    DEFINE_FIELD(reactive_power_returned_l2, FixedValue, ObisId(1, 0, 44, 7, 0), FixedField, units::kVArh, units::none);
     /* Instantaneous reactive power L3 (-Q) in W resolution */
-    DEFINE_FIELD(reactive_power_returned_l3, FixedValue, ObisId(1, 0, 64, 7, 0), FixedField, units::none, units::none);
+    DEFINE_FIELD(reactive_power_returned_l3, FixedValue, ObisId(1, 0, 64, 7, 0), FixedField, units::kVArh, units::none);
 
     /* Apparent instantaneous power (+S) in kVA resolution */
     DEFINE_FIELD(apparent_delivery_power, FixedValue, ObisId(1, 0, 9, 7, 0), FixedField, units::kVA, units::VA);
